@@ -14,5 +14,18 @@ return {
     config = function()
         vim.lsp.enable('lua_ls')
         vim.lsp.enable('ccls')
+        vim.lsp.enable('neocmake')
+        vim.diagnostic.config({
+            virtual_lines = true,
+            underline = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                    [vim.diagnostic.severity.HINT] = "󰌶",
+                }
+            }
+        })
     end,
 }
