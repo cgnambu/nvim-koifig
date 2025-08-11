@@ -17,3 +17,6 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 
 -- End debugging
 vim.keymap.set('n', '<Leader>d', ":DapTerminate<cr>", opts)
+vim.keymap.set('n', '<Leader>b', ":CMakeBuild<cr>", opts)
+vim.keymap.set('n', '<Leader>r', ":CMakeRun<cr>", opts)
+vim.keymap.set('n', '<Leader>q', ":CMakeCloseRunner<cr><BAR>:CMakeCloseExecutor<CR>", opts)

@@ -33,16 +33,28 @@ return {
             nerd_font_variant = 'mono'
         },
 
-        signature = {enabled = true},
-
         -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = false } },
+        completion = { documentation = { auto_show = false },
+            ghost_text = {      -- Added by us COREY
+                enabled = true,
+                -- Show the ghost text when an item has been selected
+                show_with_selection = true,
+                -- Show the ghost text when no item has been selected, defaulting to the first item
+                show_without_selection = false,
+                -- Show the ghost text when the menu is open
+                show_with_menu = true,
+                -- Show the ghost text when the menu is closed
+                show_without_menu = true,
+            },
+        },
 
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
+
+        signature = { enabled = true },-- Displays a preview of the selected item on the current line
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
         -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,

@@ -13,7 +13,19 @@ return {
     },
     config = function()
         vim.lsp.enable('lua_ls')
-        vim.lsp.enable('ccls')
+        vim.lsp.enable('clangd')
+        vim.lsp.config('clangd', {
+            cmd = {
+                "clangd",
+                "--function-arg-placeholders=0",
+            },
+            on_new_config = function(new_config, new_cwd)
+                local status, cmake = pcall(require, "cmake-tools")
+                if status then
+                    cmake.clangd_on_new_config(new_config)
+                end
+            end,
+        })
         vim.lsp.enable('neocmake')
         vim.diagnostic.config({
             virtual_lines = true,

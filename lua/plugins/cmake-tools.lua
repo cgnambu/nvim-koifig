@@ -1,5 +1,24 @@
 return {
     'Civitasv/cmake-tools.nvim',
+    lazy = true,
+    init = function()   -- This function allows CMake tools see the current working directory, rather than always defaulting to home unless nvim is opened in directory
+        local loaded = false
+        local function check()
+            local cwd = vim.uv.cwd()
+            if vim.fn.filereadable(cwd .. "/CMakeLists.txt") == 1 then
+                require("lazy").load({ plugins = { "cmake-tools.nvim" } })
+                loaded = true
+            end
+        end
+        check()
+        vim.api.nvim_create_autocmd("DirChanged", {
+            callback = function()
+                if not loaded then
+                    check()
+                end
+            end,
+        })
+    end,
     opts = {},
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -24,7 +43,7 @@ return {
                 return "out/${variant:buildType}"
             end, -- this is used to specify generate directory for cmake, allows macro expansion, can be a string or a function returning the string, relative to cwd.
             cmake_compile_commands_options = {
-                action = "soft_link", -- available options: soft_link, copy, lsp, none
+                action = "none", -- available options: soft_link, copy, lsp, none
                 -- soft_link: this will automatically make a soft link from compile commands file to target
                 -- copy:      this will automatically copy compile commands file to target
                 -- lsp:       this will automatically set compile commands file location using lsp
