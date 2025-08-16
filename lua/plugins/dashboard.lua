@@ -13,7 +13,7 @@ return {
 
         -- Directories to search with telescope
         local dir_to_search = '{"~/Documents","~/desktopScripts","~/Desktop/","~/Downloads","~/.config"}'
-        local current_project = "~/Documents/raylib/helloWorld/"
+        local current_project = "~/Documents/raylib/helloWorld/"        -- Update this to the project we want to work on
 
         logo = string.rep("\n", 8) .. logo .. "\n\n"
 
