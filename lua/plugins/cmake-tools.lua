@@ -1,7 +1,7 @@
 return {
     'Civitasv/cmake-tools.nvim',
     lazy = true,
-    init = function()   -- This function allows CMake tools see the current working directory, rather than always defaulting to home unless nvim is opened in directory
+    init = function()   -- This function allows CMake tools see the current working directory, rather than always defaulting to home unless nvim is opened in directory - Corey
         local loaded = false
         local function check()
             local cwd = vim.uv.cwd()
