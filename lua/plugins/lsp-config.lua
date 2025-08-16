@@ -27,6 +27,20 @@ return {
             end,
         })
         vim.lsp.enable('neocmake')
+
+        -- This is the native way to support autocomplete. Commented out as it wasn't working with C
+        --[[
+        vim.api.nvim_create_autocmd('LspAttach', {
+            callback = function(ev)
+                local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                if client:supports_method('textDocument/completion') then
+                    vim.opt.completeopt = { "menuone", "noselect", 'fuzzy', "popup" }    -- prevent the built-in vim.lsp.completion autotrigger from selecting the first item
+                    vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+                end
+            end,
+        })
+        ]]--
+
         vim.diagnostic.config({
             virtual_lines = true,
             underline = true,

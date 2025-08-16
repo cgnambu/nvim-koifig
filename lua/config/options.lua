@@ -21,3 +21,5 @@ vim.opt.swapfile = false			-- does not create swapfile
 vim.opt.expandtab = true			-- convert tabs to spaces
 vim.opt.undofile = true				-- creates persistent undo
 vim.opt.scrolloff = 8               -- sets the number of lines 
+vim.opt.signcolumn = "yes"          -- Keeps the LSP column present at all times, prevents NVim from rocking back and fourth during normal->insert
+vim.opt.winborder = "rounded"       -- Rounds off borders for other windows in vim
