@@ -30,7 +30,7 @@ return {
                 center = {
                     { action = 'Telescope find_files search_dirs='..dir_to_search,      desc = " Find File",            icon = "󰈞 ", key = "f" },
                     { action = "Telescope find_files search_dirs="..current_project,    desc = " Current Project",      icon = " ", key = "p" },
-                    { action = "ene | startinsert",                                     desc = " New File",             icon = " ", key = "n" },
+                    { action = ":e ~/Documents/Notes",                                  desc = " Notes",                icon = " ", key = "n" },
                     { action = 'Telescope oldfiles',                                    desc = " Recent Files",         icon = " ", key = "r" },
                     { action = 'Telescope live_grep search_dirs='..dir_to_search,       desc = " Find Text",            icon = " ", key = "g" },
                     { action = 'Telescope find_files search_dirs=~/.config/nvim',       desc = " Config",               icon = " ", key = "c" },
